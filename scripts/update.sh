@@ -8,5 +8,4 @@ git clone --quiet https://github.com/Anon4You/termsploit-framework $tsfDir
 cp $tsfDir/tsfconole $PATH
 chmod +x $PATH
 echo "termsploit-framework updated..starting tsfconole"
-tsfconole
 
