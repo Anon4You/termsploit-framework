@@ -14,7 +14,7 @@ Termsploit-Framework is a powerful and versatile penetration testing tool design
 ## Features
 
 - **Mobile Penetration Testing**: Conduct penetration tests on the go using your Android device.
-- **Modular Design**: Easily add or remove modules as needed for various testing scenarios.
+- **Osint**: Easily gathering information if social media accounts .
 - **User-Friendly Interface**: Simple command-line interface for ease of use.
 - **Active Development**: Continuously updated with new features and tools.
 
