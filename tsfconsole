@@ -193,13 +193,13 @@ $C2+----------------------------------+
 }
 
 usebash(){
-  read -r -e -p "psf(encrypt/bash input)> " input
+  read -r -e -p "tsf(encrypt/bash input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(encrypt/bash output)> " output
+    read -r -e -p "tsf(encrypt/bash output)> " output
     python $tsfDir/modules/encrypt/bash encrypt $input $output
     usebash
   fi
@@ -207,34 +207,34 @@ usebash(){
 }
 
 usepdf(){
-  read -r -e -p "psf(brute/pdf input)> " input
+  read -r -e -p "tsf(brute/pdf input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(brute/pdf wordlist)> " output
+    read -r -e -p "tsf(brute/pdf wordlist)> " output
     python $tsfDir/modules/brute/pdf $input $output
     usepdf
   fi
 }
 
 usezip(){
-  read -r -e -p "psf(brute/zip input)> " input
+  read -r -e -p "tsf(brute/zip input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(brute/zip output)> " output
-    read -r -e -p "psf(brute/zip wordlist)> " wordlist
+    read -r -e -p "tsf(brute/zip output)> " output
+    read -r -e -p "tsf(brute/zip wordlist)> " wordlist
     python $tsfDir/modules/brute/zip $input $output $wordlist
     usezip
   fi
 }
 
 useusername(){
-  read -r -e -p "psf(osint/username input)> " input
+  read -r -e -p "tsf(osint/username input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
@@ -247,7 +247,7 @@ useusername(){
 }
 
 useipinfo(){
-  read -r -e -p "psf(osint/ipinfo input)> " input
+  read -r -e -p "tsf(osint/ipinfo input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
@@ -260,7 +260,7 @@ useipinfo(){
 }
 
 usephone(){
-  read -r -e -p "psf(osint/phone input)> " input
+  read -r -e -p "tsf(osint/phone input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
@@ -270,21 +270,21 @@ usephone(){
     Example : for indian number - IN 
               for us number     - US
     " 
-    read -r -e -p "psf(osint/phone contry-shortname)> " shnm
+    read -r -e -p "tsf(osint/phone contry-shortname)> " shnm
     bash $tsfDir/modules/osint/phoninfo $input $shnm
     usephone
   fi
 }
 
 usehash(){
-  read -r -e -p "psf(brute/hash input)> " input
+  read -r -e -p "tsf(brute/hash input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(brute/hash type)> " type
-    read -r -e -p "psf(brute/hash wordlist)> " wordlist
+    read -r -e -p "tsf(brute/hash type)> " type
+    read -r -e -p "tsf(brute/hash wordlist)> " wordlist
     python $tsfDir/modules/brute/hash $input $type $wordlist
     usehash
   fi
@@ -292,13 +292,13 @@ usehash(){
 }
 
 usepython(){
-  read -r -e -p "psf(encrypt/python input)> " input
+  read -r -e -p "tsf(encrypt/python input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(encrypt/bash output)> " output
+    read -r -e -p "tsf(encrypt/bash output)> " output
     python $tsfDir/modules/encrypt/python $input $output
     usepython
   fi
@@ -306,13 +306,13 @@ usepython(){
 }
 
 usedecbash(){
-  read -r -e -p "psf(decrypt/bash input)> " input
+  read -r -e -p "tsf(decrypt/bash input)> " input
   if [[ $input == "back" ]]; then
     main
   elif [[ $input == "exit" || $input == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(decrypt/bash output)> " output
+    read -r -e -p "tsf(decrypt/bash output)> " output
     python $tsfDir/modules/encrypt/bash decrypt $input $output
     usedecbash
   fi
@@ -320,14 +320,14 @@ usedecbash(){
 }
 
 usebgmi(){
-  read -r -e -p "psf(ddos/bgni Ip-address)> " ip
+  read -r -e -p "tsf(ddos/bgni Ip-address)> " ip
   if [[ $ip == "back" ]]; then
     main
   elif [[ $ip == "exit" || $ip == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(ddos/bgmi port)> " port
-    read -r -e -p "psf(ddos/bgmi duration)> " duration
+    read -r -e -p "tsf(ddos/bgmi port)> " port
+    read -r -e -p "tsf(ddos/bgmi duration)> " duration
     python $tsfDir/modules/ddos/bgmi $ip -p $port -d $duration
     usebgmi
   fi
@@ -335,15 +335,15 @@ usebgmi(){
 }
 
 usehttp(){
-  read -r -e -p "psf(ddos/httpflood URL)> " ip
+  read -r -e -p "tsf(ddos/httpflood URL)> " ip
   if [[ $ip == "back" ]]; then
     main
   elif [[ $ip == "exit" || $ip == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(ddos/httpflood threads)> " threads
-    read -r -e -p "psf(ddos/httpflood duration)> " duration
-    read -r -e -p "psf(ddos/httpflood rate)> " rate
+    read -r -e -p "tsf(ddos/httpflood threads)> " threads
+    read -r -e -p "tsf(ddos/httpflood duration)> " duration
+    read -r -e -p "tsf(ddos/httpflood rate)> " rate
     python $tsfDir/modules/ddos/httpflood $ip -n $threads -r $rate -d $duration
     usehttp
   fi
@@ -351,14 +351,14 @@ usehttp(){
 }
 
 useslow(){
-  read -r -e -p "psf(ddos/slowloris Ip-address)> " ip
+  read -r -e -p "tsf(ddos/slowloris Ip-address)> " ip
   if [[ $ip == "back" ]]; then
     main
   elif [[ $ip == "exit" || $ip == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(ddos/slowloris port)> " port
-    read -r -e -p "psf(ddos/slowloris duration)> " duration
+    read -r -e -p "tsf(ddos/slowloris port)> " port
+    read -r -e -p "tsf(ddos/slowloris duration)> " duration
     python $tsfDir/modules/ddos/slowloris $ip $port $duration
     useslow
   fi
@@ -366,14 +366,14 @@ useslow(){
 }
 
 uselayer7(){
-  read -r -e -p "psf(ddos/layer7 URL)> " ip
+  read -r -e -p "tsf(ddos/layer7 URL)> " ip
   if [[ $ip == "back" ]]; then
     main
   elif [[ $ip == "exit" || $ip == "quit" ]]; then
     terminator
   else
-    read -r -e -p "psf(ddos/httpflood threads)> " threads
-    read -r -e -p "psf(ddos/httpflood duration)> " duration
+    read -r -e -p "tsf(ddos/httpflood threads)> " threads
+    read -r -e -p "tsf(ddos/httpflood duration)> " duration
     python $tsfDir/modules/ddos/L7ddos $ip -n $threads -d $duration
     uselayer7
   fi
@@ -388,7 +388,7 @@ animator(){
 }
 
 main(){
-  read -e -r -p "psf > " tmd
+  read -e -r -p "tsf > " tmd
   if [[ $tmd == "help" || $tmd == "show options" ]]; then
     help;main
   elif [[ $tmd == "clear" ]]; then
