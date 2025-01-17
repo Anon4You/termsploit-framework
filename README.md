@@ -1,5 +1,11 @@
 ## termsploit-framework
 
+<p align="center">
+  <img src="ss.jpg">
+</p>
+
+##
+<h3><p align="center">About</p></h3>
 Termsploit-Framework is a powerful and versatile penetration testing tool designed specifically for Termux, the terminal emulator and Linux environment for Android. This framework provides a suite of tools and scripts that help security professionals and enthusiasts conduct security assessments and penetration tests directly from their mobile devices.
 
 ## Table of Contents
@@ -8,7 +14,6 @@ Termsploit-Framework is a powerful and versatile penetration testing tool design
 - [Installation](#installation)
 - [Usage](#usage)
 - [Development](#development)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
@@ -42,22 +47,6 @@ Follow the on-screen instructions to navigate through the available tools and mo
 ## Development
 
 Termsploit-Framework is currently in development. Contributions, suggestions, and feedback are welcome! 
-
-### Roadmap
-
-- Add more modules for different types of penetration testing.
-- Improve documentation and user guides.
-- Enhance the user interface for better experience.
-
-## Contributing
-
-If you'd like to contribute to the development of Termsploit-Framework, please follow these steps:
-
-1. Fork the repository.
-2. Create a new feature branch (`git checkout -b feature/YourFeature`).
-3. Make your changes and commit them (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
-5. Open a Pull Request.
 
 ## License
 
