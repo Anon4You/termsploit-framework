@@ -1,11 +1,4 @@
 ## termsploit-framework
-
-<p align="center">
-  <img src="ss.jpg">
-</p>
-
-##
-<h3><p align="center">About</p></h3>
 Termsploit-Framework is a powerful and versatile penetration testing tool designed specifically for Termux, the terminal emulator and Linux environment for Android. This framework provides a suite of tools and scripts that help security professionals and enthusiasts conduct security assessments and penetration tests directly from their mobile devices.
 
 ## Table of Contents
