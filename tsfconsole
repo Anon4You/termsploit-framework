@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃ Project : Termsploit-framework                                          ┃
+#┃ Author  : Alienkrishn [Anon4You]                                        ┃
+#┃ Version : 1.0.0 (Latest)                                                ┃  
+#┃ Github  : github.com/Anon4You                                           ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
 tsfDir="$PREFIX/opt/termsploit/"
 
 VERSION=$(cat $tsfDir/scripts/version)
