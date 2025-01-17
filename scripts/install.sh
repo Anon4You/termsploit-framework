@@ -5,7 +5,7 @@ c1="\e[31m"
 c2="\e[32m"
 c0="\e[0m"
 
-if [[ -d $tsfDir ]]; then
+if [[ -d "$tsfDir" ]]; then
   rm -rf $tsfDir > /dev/null 2>&1
 fi
 printf "$c2 --Updating repositoris...$c0\n"
