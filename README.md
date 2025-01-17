@@ -31,7 +31,7 @@ To install Termsploit-Framework, follow these steps:
 
 ## Installation 
 ```bash
-bash <(curl -sL 1pt.co/tsfconsole)
+bash <(curl -sL is.gd/Najt3c)
 ```
 
 ## Usage
