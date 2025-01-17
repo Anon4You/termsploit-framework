@@ -15,7 +15,7 @@ printf "$c2 --Installing required packages...$c0\n"
 apt install git curl python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm rust jq python-pillow nodejs qpdf libiconv libxml2 libxslt -y
 
 apt clean
-
+printf "c2 --Cloning Termsploit-Framework...$c0\n"
 git clone --quiet https://github.com/Anon4You/termsploit-framework $tsfDir
 
 cp $tsfDir/tsfconsole $PATH/tsfconsole
@@ -27,4 +27,4 @@ printf "$c2 --Installing npm dependencies..."
 npm -g install bash-obfuscate
 
 printf "$c2 termsploit-framework installed..$c0\n"
-printf "Type ${c1}tsfconsole ${c0}to run it\n"
+printf "Type${c1} tsfconsole${c0} to run it\n"
