@@ -25,6 +25,6 @@ printf "$c2 --Installing pip dependencies...\n$c1 !! It may take some time be pa
 pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks]
 printf "$c2 --Installing npm dependencies..."
 npm -g install bash-obfuscate
-
-printf "$c2 termsploit-framework installed..$c0\n"
+printf "$c0\n"
+printf "termsploit-framework installed..\n"
 printf "Type${c1} tsfconsole${c0} to run it\n"
