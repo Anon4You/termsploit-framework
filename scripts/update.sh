@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 tsfDir="$PREFIX/opt/termsploit"
 
-if [[ -d $tsfDir ]]; then
+if [[ -d "$tsfDir" ]]; then
   rm -rf $tsfDir > /dev/null 2>&1
 fi
 git clone --quiet https://github.com/Anon4You/termsploit-framework $tsfDir
