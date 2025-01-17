@@ -1,0 +1,445 @@
+#!/usr/bin/env bash
+tsfDir="$PREFIX/opt/termsploit/"
+
+VERSION=$(cat $tsfDir/scripts/version)
+AUTHOR="Alienkrishn [Anon4You]"
+
+# colors
+#---------
+C1="\e[31m"
+C2="\e[32m"
+C3="\e[33m"
+C4="\e[34m"
+C5="\e[35m"
+C6="\e[36m"
+C0="\e[0m"
+W="\e[0;1m"
+#----------
+
+tsfupdate(){
+  new_version=$(curl -sL https://raw.githubusercontent.com/Anon4You/termsploit-framework/refs/heads/main/scripts/version)
+  if [[ $VERSION != $new_version ]]; then
+    read -p "Update availabe want to update it(Y/n)?: " input
+    if [[ $input != n ]]; then
+      bash $tsfDir/scripts/update.sh
+    fi
+  fi
+}
+
+netcheck(){
+  ping -c 1 google.com >/dev/null 2>&1
+  if [ "$?" != '0' ]; then
+  printf "Internet tera baap on karega madarchod!!\n"
+  exit 1
+fi
+}
+
+menu(){
+  randomBANNER
+  echo -e "${C0}\r
++ -- --=[${C4} Termsploit-Framework v$VERSION${C0}       ]
++ -- --=[ 5 modules - 12 submodules         ]      
++ -- --=[ ${C2}Created by $AUTHOR$C0 ]
+  "
+}
+
+randomBANNER(){ 
+  RANDOMs=$(echo $((0 + $RANDOM % 8)))
+  if [[ ${RANDOMs} == "0" ]]; then 
+    cat $tsfDir/banners/banner.8
+  else
+    cat $tsfDir/banners/banner."${RANDOMs}"
+  fi 
+}
+
+
+help(){
+  printf "
+${C3}==========================
+${W}    Available options
+${C3}==========================${C2}
+
+    Command                        Description${C0}
+   —————————                      —————————————
+  quit or exit           |->    To exit from tool
+  help or show options   |->    To show this menu
+  banner                 |->    To generate a random banner
+  clear                  |->    To clear the screen
+  show modules           |->    To show availabe modules
+  \n"
+}
+
+modules(){
+  printf "
+$C3==========================
+   $W Available modules
+$C3==========================$C2
+
+   modules                        Description$C0
+  —————————                      —————————————
+  brute                  |->    To perform bruteforce attack
+  ddos                   |->    To perform DDoS attack
+  encrypt                |->    To Encrypt code bash & python
+  dycrypt                |->    To dycrypt code bash
+  osint                  |->    To OSINT username,ip & phone
+  back                   |->    To go back to main menu 
+ 
+ Usage : 
+  shaw <module_name>     |->    To shaw all submodules 
+  \n"
+}
+
+brute(){
+  printf "
+$C2+----------------------------------+
+|      $C1 BRUTEFORCE PROGRAMM $C2       |
++----------------------------------+$C3
+
+ submodules                      Description$C0
+ —————————                      —————————————
+  hash                   |->    To perform Hash bruteforce
+  zip                    |->    To perform zip bruteforce
+  pdf                    |->    To perform pdf bruteforce
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+ 
+ Usage : 
+  use <module_name>/<submodule_name>  To use submodules
+\n"
+}
+
+osint(){
+  printf "
+$C2+----------------------------------+
+|  $C1 Open source info gethering$C2     |
++----------------------------------+$C3
+
+ submodules                     Description$C0
+ —————————                      —————————————
+  username               |->    OSINT hunt down social media account
+  ipinfo                 |->    OSINT Ip-address information
+  phone                  |->    OSINT phone number information
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+ 
+ Usage : 
+  use <module_name>/<submodule_name>  To use submodules
+
+\n"
+}
+
+ddos(){
+  printf "
+$C2+----------------------------------+
+|   $C1 Denials of service attack $C2    |
++----------------------------------+$C3
+
+ submodules                      Description$C0
+ —————————                      —————————————
+  bgmi                   |->    BGMI server freez vip
+  httpflood              |->    DDoS attack http-flood
+  layer7                 |->    DDoS attack Layer 7
+  slowloris              |->    DDoS attack slowloris
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+ 
+ Usage : 
+  use <module_name>/<submodule_name>  To use submodules
+\n"
+}
+
+encrypt(){
+  printf "
+$C2+----------------------------------+
+|  $C1     ENCRYPTION PROGRAMM   $C2     |
++----------------------------------+$C3
+
+  submodules                      Description$C0
+  —————————                      —————————————
+  python                 |->    Encrypt python script
+  bash                   |->    ObFuscate bash script
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+ 
+ Usage : 
+  use <module_name>/<submodule_name>  To use submodules
+  \n"
+}
+
+decrypt(){
+  printf "
+$C2+----------------------------------+
+|  $C1     DECRYPTION PROGRAMM  $C2      |
++----------------------------------+$C3
+
+ submodules                      Description$C0
+ —————————                      —————————————
+  bash                   |->    Decrypt bash obfuscated script
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+ 
+ Usage : 
+  use <module_name>/<submodule_name>  To use submodules
+  \n
+  "
+}
+
+usebash(){
+  read -r -e -p "psf(encrypt/bash input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(encrypt/bash output)> " output
+    python $tsfDir/modules/encrypt/bash encrypt $input $output
+    usebash
+  fi
+
+}
+
+usepdf(){
+  read -r -e -p "psf(brute/pdf input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(brute/pdf wordlist)> " output
+    python $tsfDir/modules/brute/pdf $input $output
+    usepdf
+  fi
+}
+
+usezip(){
+  read -r -e -p "psf(brute/zip input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(brute/zip output)> " output
+    read -r -e -p "psf(brute/zip wordlist)> " wordlist
+    python $tsfDir/modules/brute/zip $input $output $wordlist
+    usezip
+  fi
+}
+
+useusername(){
+  read -r -e -p "psf(osint/username input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    bash $tsfDir/modules/osint/username $input 
+    useusername
+    
+  fi
+}
+
+useipinfo(){
+  read -r -e -p "psf(osint/ipinfo input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    bash $tsfDir/modules/osint/ipinfo $input
+    useipinfo
+
+  fi
+}
+
+usephone(){
+  read -r -e -p "psf(osint/phone input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    echo -e "
+    Example : for indian number - IN 
+              for us number     - US
+    " 
+    read -r -e -p "psf(osint/phone contry-shortname)> " shnm
+    bash $tsfDir/modules/osint/phoninfo $input $shnm
+    usephone
+  fi
+}
+
+usehash(){
+  read -r -e -p "psf(brute/hash input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(brute/hash type)> " type
+    read -r -e -p "psf(brute/hash wordlist)> " wordlist
+    python $tsfDir/modules/brute/hash $input $type $wordlist
+    usehash
+  fi
+
+}
+
+usepython(){
+  read -r -e -p "psf(encrypt/python input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(encrypt/bash output)> " output
+    python $tsfDir/modules/encrypt/python $input $output
+    usepython
+  fi
+
+}
+
+usedecbash(){
+  read -r -e -p "psf(decrypt/bash input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(decrypt/bash output)> " output
+    python $tsfDir/modules/encrypt/bash decrypt $input $output
+    usedecbash
+  fi
+
+}
+
+usebgmi(){
+  read -r -e -p "psf(ddos/bgni Ip-address)> " ip
+  if [[ $ip == "back" ]]; then
+    main
+  elif [[ $ip == "exit" || $ip == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(ddos/bgmi port)> " port
+    read -r -e -p "psf(ddos/bgmi duration)> " duration
+    python $tsfDir/modules/ddos/bgmi $ip -p $port -d $duration
+    usebgmi
+  fi
+
+}
+
+usehttp(){
+  read -r -e -p "psf(ddos/httpflood URL)> " ip
+  if [[ $ip == "back" ]]; then
+    main
+  elif [[ $ip == "exit" || $ip == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(ddos/httpflood threads)> " threads
+    read -r -e -p "psf(ddos/httpflood duration)> " duration
+    read -r -e -p "psf(ddos/httpflood rate)> " rate
+    python $tsfDir/modules/ddos/httpflood $ip -n $threads -r $rate -d $duration
+    usehttp
+  fi
+
+}
+
+useslow(){
+  read -r -e -p "psf(ddos/slowloris Ip-address)> " ip
+  if [[ $ip == "back" ]]; then
+    main
+  elif [[ $ip == "exit" || $ip == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(ddos/slowloris port)> " port
+    read -r -e -p "psf(ddos/slowloris duration)> " duration
+    python $tsfDir/modules/ddos/slowloris $ip $port $duration
+    useslow
+  fi
+
+}
+
+uselayer7(){
+  read -r -e -p "psf(ddos/layer7 URL)> " ip
+  if [[ $ip == "back" ]]; then
+    main
+  elif [[ $ip == "exit" || $ip == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "psf(ddos/httpflood threads)> " threads
+    read -r -e -p "psf(ddos/httpflood duration)> " duration
+    python $tsfDir/modules/ddos/L7ddos $ip -n $threads -d $duration
+    uselayer7
+  fi
+}
+
+terminator(){
+  python $tsfDir/scripts/terminator.py
+}
+animator(){
+  clear
+  python $tsfDir/scripts/animator.py
+}
+
+main(){
+  read -e -r -p "psf > " tmd
+  if [[ $tmd == "help" || $tmd == "show options" ]]; then
+    help;main
+  elif [[ $tmd == "clear" ]]; then
+    clear;main
+  elif [[ $tmd == "exit" || $tmd == "quit" ]]; then
+    terminator
+  elif [[ $tmd == "banner" ]]; then
+    clear
+    menu;main
+  elif [[ $tmd == "show modules" ]]; then
+    modules;main
+  elif [[ $tmd == "back" ]]; then
+    clear;menu;main
+  elif [[ $tmd == "show brute" ]]; then
+    brute;main
+  elif [[ $tmd == "show osint" ]]; then
+    osint;main
+  elif [[ $tmd == "show ddos" ]]; then
+    ddos;main
+  elif [[ $tmd == "show encrypt" ]]; then
+    encrypt;main
+  elif [[ $tmd == "show decrypt" ]]; then
+    decrypt;main
+  elif [[ $tmd == "use encrypt/bash" ]]; then
+    usebash
+  elif [[ $tmd == "use brute/pdf" ]]; then
+    usepdf
+  elif [[ $tmd == "use brute/hash" ]]; then
+    usehash
+  elif [[ $tmd == "use brute/zip" ]]; then
+    usezip
+  elif [[ $tmd == "use osint/username" ]]; then
+    useusername
+  elif [[ $tmd == "use osint/ipinfo" ]]; then
+    useipinfo
+  elif [[ $tmd == "use osint/phone" ]]; then
+    usephone
+  elif [[ $tmd == "use ddos/bgmi" ]]; then
+    usebgmi
+  elif [[ $tmd == "use ddos/httpflood" ]]; then
+    usehttp
+  elif [[ $tmd == "use ddos/slowloris" ]]; then
+    useslow
+  elif [[ $tmd == "use encrypt/python" ]]; then
+    usepython
+  elif [[ $tmd == "use decrypt/bash" ]]; then
+    usedecbash
+  elif [[ $tmd == "use ddos/layer7" ]]; then
+    uselayer7
+  else
+    printf "\nInvalid input..\n"; sleep 1
+    main  
+    
+  fi
+}
+
+
+animator
+netcheck
+tsfupdate
+menu
+main
