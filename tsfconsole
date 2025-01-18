@@ -29,7 +29,7 @@ tsfupdate(){
   if [[ $VERSION != $new_version ]]; then
     read -p "Update availabe want to update it(Y/n)?: " input
     if [[ $input != n ]]; then
-      bash $tsfDir/scripts/update.sh
+      curl -sL https://raw.githubusercontent.com/Anon4You/termsploit-framework/refs/heads/main/scripts/install.sh | bash
     fi
   fi
 }
@@ -46,7 +46,7 @@ menu(){
   randomBANNER
   echo -e "${C0}\r
 + -- --=[${C4} Termsploit-Framework v$VERSION${C0}       ]
-+ -- --=[ 5 modules - 12 submodules         ]      
++ -- --=[ 5 modules - 13submodules         ]      
 + -- --=[ ${C2}Created by $AUTHOR$C0 ]
   "
 }
@@ -127,6 +127,7 @@ $C2+----------------------------------+
   username               |->    OSINT hunt down social media account
   ipinfo                 |->    OSINT Ip-address information
   phone                  |->    OSINT phone number information
+  emali                  |->    OSINT email information
   back                   |->    To go back to main menu
   exit or quit           |->    To exit the framework
  
@@ -255,6 +256,19 @@ useipinfo(){
   else
     bash $tsfDir/modules/osint/ipinfo $input
     useipinfo
+
+  fi
+}
+
+useemail(){
+  read -r -e -p "tsf(osint/email input)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    bash $tsfDir/modules/osint/email $input
+    useemail
 
   fi
 }
@@ -438,8 +452,10 @@ main(){
     usedecbash
   elif [[ $tmd == "use ddos/layer7" ]]; then
     uselayer7
+  elif [[ $tmd == "use osint/email" ]]; then
+    useemail
   else
-    printf "\nInvalid input..\n"; sleep 1
+    printf "\nInvalid input..\n"
     main  
     
   fi

@@ -12,7 +12,7 @@ printf "$c2 --Updating repositoris...$c0\n"
 apt update -y
 
 printf "$c2 --Installing required packages...$c0\n"
-apt install git curl python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm rust jq python-pillow nodejs qpdf libiconv libxml2 libxslt -y
+apt install git curl python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm rust jq python-pillow nodejs qpdf libiconv libxml2 libxslt dnsutils whois-y
 
 apt clean
 printf "$c2 --Cloning Termsploit-Framework...$c0\n"
