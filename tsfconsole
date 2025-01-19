@@ -61,7 +61,7 @@ menu(){
   randomBANNER
   echo -e "${C0}\r
 + -- --=[${C4} Termsploit-Framework v$VERSION${C0}       ]
-+ -- --=[ 5 modules - 13submodules         ]      
++ -- --=[ 6 modules - 15 submodules         ]      
 + -- --=[ ${C2}Created by $AUTHOR$C0 ]
   "
 }
