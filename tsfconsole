@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-#┃ Project : Termsploit-framework                                          ┃
-#┃ Author  : Alienkrishn [Anon4You]                                        ┃
-#┃ Version : 1.0.0 (Latest)                                                ┃  
-#┃ Github  : github.com/Anon4You                                           ┃
-#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃ Project : Termsploit-framework                      ┃
+#┃ Author  : Alienkrishn [Anon4You]                    ┃
+#┃ Version : 1.0.0 (Latest)                            ┃  
+#┃ Github  : github.com/Anon4You                       ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 tsfDir="$PREFIX/opt/termsploit/"
 
@@ -23,6 +23,21 @@ C6="\e[36m"
 C0="\e[0m"
 W="\e[0;1m"
 #----------
+
+url_checker() {
+    if [ ! "${1//:*}" = http ]; then
+        if [ ! "${1//:*}" = https ]; then
+            echo -e "\e[31m[!] Invalid URL. Please use http or https.\e[0m"
+            usemask
+        fi
+    fi
+}
+
+usr_intrp(){
+  printf "\e[0m\e[1;36m\t CTRL+C Pressed!, Exiting...\n"
+  sleep 2
+  exit 0
+}
 
 tsfupdate(){
   new_version=$(curl -sL https://raw.githubusercontent.com/Anon4You/termsploit-framework/refs/heads/main/scripts/version)
@@ -46,7 +61,7 @@ menu(){
   randomBANNER
   echo -e "${C0}\r
 + -- --=[${C4} Termsploit-Framework v$VERSION${C0}       ]
-+ -- --=[ 5 modules - 13 submodules         ]      
++ -- --=[ 5 modules - 13submodules         ]      
 + -- --=[ ${C2}Created by $AUTHOR$C0 ]
   "
 }
@@ -90,10 +105,11 @@ $C3==========================$C2
   encrypt                |->    To Encrypt code bash & python
   dycrypt                |->    To dycrypt code bash
   osint                  |->    To OSINT username,ip & phone
+  scam                   |->    To use Phishimg and scams
   back                   |->    To go back to main menu 
  
  Usage : 
-  shaw <module_name>     |->    To shaw all submodules 
+  show <module_name>     |->    To shaw all submodules 
   \n"
 }
 
@@ -128,6 +144,7 @@ $C2+----------------------------------+
   ipinfo                 |->    OSINT Ip-address information
   phone                  |->    OSINT phone number information
   emali                  |->    OSINT email information
+  webinfo                |->    OSINT website information 
   back                   |->    To go back to main menu
   exit or quit           |->    To exit the framework
  
@@ -191,6 +208,39 @@ $C2+----------------------------------+
   use <module_name>/<submodule_name>  To use submodules
   \n
   "
+}
+
+scam(){
+  printf "
+$C2+----------------------------------+
+|  $c1     Scam attack PROGRAMM   $c2    |
++----------------------------------+$C3
+
+ submodules                      Description$C0
+ —————————                      —————————————
+  phish                  |->    Simple phishing page maker
+  maskurl                |->    Mask url with any Domain
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+
+ Usage :
+  use <module_name>/<submodule_name>  To use submodules
+  \n
+  "
+}
+
+
+usewebsite(){
+    read -r -e -p "tsf(osint/webinfo Target)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    bash $tsfDir/modules/osint/website $input
+    usewebsite
+
+  fi
 }
 
 usebash(){
@@ -393,6 +443,40 @@ uselayer7(){
   fi
 }
 
+usephish(){
+  read -r -e -p "tsf(scam/phish URL)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    read -r -e -p "tsf(scam/phish Port)> " port
+    cd $tsfDir/modules/scam
+    python phish -u $input -p $port
+    cd
+    usephish
+  fi
+}
+
+
+usemask(){
+  read -r -e -p "tsf(scam/maskurl URL)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    url_checker $input
+    sleep 1 
+    short=$(curl -s https://is.gd/create.php\?format\=simple\&url\=$input)
+    shorter=${short#https://}
+    read -r -e -p "tsf(scam/maskurl Domain)> " masked
+    final=$masked@$shorter
+    printf "Your masked URL is :\e[34m $final \n\e[0m"
+    usemask
+  fi
+}
+
 terminator(){
   python $tsfDir/scripts/terminator.py
 }
@@ -405,6 +489,8 @@ main(){
   read -e -r -p "tsf > " tmd
   if [[ $tmd == "help" || $tmd == "show options" ]]; then
     help;main
+  elif [[ $tmd == "show scam" ]]; then
+    scam;main
   elif [[ $tmd == "clear" ]]; then
     clear;main
   elif [[ $tmd == "exit" || $tmd == "quit" ]]; then
@@ -412,6 +498,8 @@ main(){
   elif [[ $tmd == "banner" ]]; then
     clear
     menu;main
+  elif [[ $tmd == "use osint/webinfo" ]]; then
+    usewebsite
   elif [[ $tmd == "show modules" ]]; then
     modules;main
   elif [[ $tmd == "back" ]]; then
@@ -454,6 +542,10 @@ main(){
     uselayer7
   elif [[ $tmd == "use osint/email" ]]; then
     useemail
+  elif [[ $tmd == "use scam/phish" ]]; then
+    usephish
+  elif [[ $tmd == "use scam/maskurl" ]]; then
+    usemask
   else
     printf "\nInvalid input..\n"
     main  
@@ -461,7 +553,8 @@ main(){
   fi
 }
 
-
+trap usr_intrp SIGINT
+trap usr_intrp SIGTSTP
 animator
 netcheck
 tsfupdate

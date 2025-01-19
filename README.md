@@ -15,6 +15,8 @@ Termsploit-Framework is a powerful and versatile penetration testing tool design
 - **Osint**: Easily gather information of social media accounts .
 - **DDoS** Run various types of ddos script using ddos module
 - **Bruteforce** Bruteforce hashes,zipfile and PDF password
+- **Scams** pshishing attack and url masking
+- **Encryp/Decrypt** Encrypt python code and obuscate bash code 
 - **User-Friendly Interface**: Simple command-line interface for ease of use.
 - **Active Development**: Continuously updated with new features and tools.
 

@@ -12,7 +12,7 @@ printf "$c2 --Updating repositoris...$c0\n"
 apt update -y
 
 printf "$c2 --Installing required packages...$c0\n"
-apt install git curl python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm rust jq python-pillow nodejs qpdf libiconv libxml2 libxslt dnsutils whois -y
+apt install git curl python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm rust jq python-pillow nodejs qpdf libiconv libxml2 libxslt dnsutils whois php -y
 
 apt clean
 printf "$c2 --Cloning Termsploit-Framework...$c0\n"
@@ -22,7 +22,7 @@ cp $tsfDir/tsfconsole $PATH/tsfconsole
 chmod +x $PATH/tsfconsole
 
 printf "$c2 --Installing pip dependencies...\n$c1 !! It may take some time be patient...$c0\n"
-pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks]
+pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks] bs4 urllib
 printf "$c2 --Installing npm dependencies..."
 npm -g install bash-obfuscate
 printf "$c0\n"
