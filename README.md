@@ -28,7 +28,7 @@ To install Termsploit-Framework, follow these steps:
 
 ## Installation 
 ```bash
-bash <(curl -sL is.gd/tsfconsole)
+curl -sL https://github.com/Anon4You/termsploit-framework/raw/main/scripts/install.sh | bash
 ```
 
 ## Usage
