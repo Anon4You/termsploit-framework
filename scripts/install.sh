@@ -18,13 +18,13 @@ apt clean
 printf "$c2 --Cloning Termsploit-Framework...$c0\n"
 git clone --quiet https://github.com/Anon4You/termsploit-framework $tsfDir
 
-cp $tsfDir/tsfconsole $PATH/tsfconsole
-chmod +x $PATH/tsfconsole
-
 printf "$c2 --Installing pip dependencies...\n$c1 !! It may take some time be patient...$c0\n"
-pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks] bs4 urllib
+pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks] bs4 urllib3
 printf "$c2 --Installing npm dependencies..."
 npm -g install bash-obfuscate
 printf "$c0\n"
+rm $PATH/tsfconsole 
+mv $tsfDir/tsfconsole $PATH/tsfconsole
+chmod +x $PATH/tsfconsole
 printf "termsploit-framework installed..\n"
 printf "Type${c1} tsfconsole${c0} to run it\n"
