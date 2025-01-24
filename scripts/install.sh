@@ -7,6 +7,8 @@ c0="\e[0m"
 
 if [[ -d "$tsfDir" ]]; then
   rm -rf $tsfDir > /dev/null 2>&1
+else
+  mkdir -p $PREFIX/opt
 fi
 printf "$c2 --Updating repositoris...$c0\n"
 apt update -y
