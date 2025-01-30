@@ -61,7 +61,7 @@ menu(){
   randomBANNER
   echo -e "${C0}\r
 + -- --=[${C4} Termsploit-Framework v$VERSION${C0}       ]
-+ -- --=[ 6 modules - 15 submodules         ]      
++ -- --=[ 7 modules - 18 submodules         ]      
 + -- --=[ ${C2}Created by $AUTHOR$C0 ]
   "
 }
@@ -106,6 +106,7 @@ $C3==========================$C2
   dycrypt                |->    To dycrypt code bash
   osint                  |->    To OSINT username,ip & phone
   scam                   |->    To use Phishimg and scams
+  scanner                |->    To scan vulnerable sites
   back                   |->    To go back to main menu 
  
  Usage : 
@@ -227,6 +228,25 @@ $C2+----------------------------------+
   use <module_name>/<submodule_name>  To use submodules
   \n
   "
+}
+
+scanner(){
+  printf "
+$C2+----------------------------------+
+|  $c1     Vulnerability scanner $c2     |
++----------------------------------+$C3
+
+ submodules                      Description$C0
+ —————————                      —————————————
+  port                   |->    To scan open ports
+  adminpanel             |->    To search for admin pannel
+  vuln                   |->    To find Vulnerability 
+  back                   |->    To go back to main menu
+  exit or quit           |->    To exit the framework
+ 
+ Usage : 
+  use <module_name>/<submodule_name>  To use submodules
+\n"
 }
 
 
@@ -477,6 +497,43 @@ usemask(){
   fi
 }
 
+useapf(){
+    read -r -e -p "tsf(scanner/adminpanel URL)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    php $tsfDir/modules/scanner/apf.php -u $input
+    useapf
+  fi
+}
+
+useps(){
+    read -r -e -p "tsf(scanner/port URL)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    php $tsfDir/modules/scanner/ps.php -u $input
+    useps
+  fi
+}
+
+usevs(){
+    read -r -e -p "tsf(scanner/vuln URL)> " input
+  if [[ $input == "back" ]]; then
+    main
+  elif [[ $input == "exit" || $input == "quit" ]]; then
+    terminator
+  else
+    php $tsfDir/modules/scanner/vs.php -u $input
+    usevs
+  fi
+}
+
+
 terminator(){
   python $tsfDir/scripts/terminator.py
 }
@@ -514,6 +571,8 @@ main(){
     encrypt;main
   elif [[ $tmd == "show decrypt" ]]; then
     decrypt;main
+  elif [[ $tmd == "show scanner" ]]; then
+    scanner;main
   elif [[ $tmd == "use encrypt/bash" ]]; then
     usebash
   elif [[ $tmd == "use brute/pdf" ]]; then
@@ -546,6 +605,12 @@ main(){
     usephish
   elif [[ $tmd == "use scam/maskurl" ]]; then
     usemask
+  elif [[ $tmd == "use scanner/port" ]]; then
+    useps
+  elif [[ $tmd == "use scanner/adminpanel" ]]; then
+    useapf
+  elif [[ $tmd == "use scanner/vuln" ]]; then
+    usevs
   else
     printf "\nInvalid input..\n"
     main  
