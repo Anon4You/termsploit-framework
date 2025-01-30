@@ -62,11 +62,12 @@ function parseArguments(): array {
         die("Invalid or missing URL. Please provide a valid URL using -u or --url.\n");
     }
 
-    return $url;
+    return [$url]; // Return an array with the URL
 }
 
 function main() {
-    $url = parseArguments();
+    $args = parseArguments();
+    $url = $args[0]; // Get the URL from the array
     $host = parse_url($url, PHP_URL_HOST);
     $startPort = 1;
     $endPort = 1024;
